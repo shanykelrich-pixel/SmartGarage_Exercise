@@ -9,15 +9,9 @@ namespace SmartGarage_Exercise
 	/// <summary>
 	/// מייצג אופנוע בעל מנוע דלק.
 	/// </summary>
-	public class Motorcycle
+	public class Motorcycle :Vehicle
 	{
-		/// <summary>
-		/// שם הדגם של האופנוע.
-		/// </summary>
-		public string ModelName
-		{
-			get; set;
-		}
+	
 
 		/// <summary>
 		/// אחוז הדלק הנוכחי (בין 0 ל-100).
@@ -32,8 +26,8 @@ namespace SmartGarage_Exercise
 		/// </summary>
 		/// <param name="model">שם דגם האופנוע.</param>
 		/// <param name="fuel">כמות הדלק ההתחלתית.</param>
-		public Motorcycle(string model, int fuel)
-		{
+		public Motorcycle(string model, int fuel): base(model)
+        {
 			ModelName = model;
 			// Math.Clamp: מבטיח שהדלק יהיה תמיד בטווח 0-100.
 			FuelPercentage = Math.Clamp(fuel, 0, 100);
@@ -42,7 +36,7 @@ namespace SmartGarage_Exercise
 		/// <summary>
 		/// מבצע פעולת נסיעה הצורכת דלק (בצורה שונה ממכונית).
 		/// </summary>
-		public void Drive()
+		public override void Drive()
 		{
 			if (FuelPercentage > 5)
 			{
@@ -67,7 +61,7 @@ namespace SmartGarage_Exercise
 		/// <summary>
 		/// מזיז את האופנוע שמאלה.
 		/// </summary>
-		public void MoveLeft()
+		public override void MoveLeft()
 		{
 			Console.WriteLine($"Motorcycle {ModelName} leans left.");
 		}
@@ -75,7 +69,7 @@ namespace SmartGarage_Exercise
 		/// <summary>
 		/// מזיז את האופנוע ימינה.
 		/// </summary>
-		public void MoveRight()
+		public override void MoveRight()
 		{
 			Console.WriteLine($"Motorcycle {ModelName} leans right.");
 		}
